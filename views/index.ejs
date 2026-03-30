@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách bài viết</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; text-align: center; }
+        .add-btn { display: inline-block; background: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-bottom: 20px; }
+        ul { padding: 0; list-style: none; }
+        li { background: white; margin-bottom: 15px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        strong { font-size: 1.3em; color: #007bff; }
+        p.post-body { margin: 10px 0; color: #555; }
+        .view-link { color: #dc3545; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>📋 Danh sách bài viết Blog</h1>
+    <a href="/blogposts/new" class="add-btn">+ Tạo bài viết mới</a>
+    <hr>
+
+    <% if (posts.length > 0) { %>
+        <ul>
+            <% posts.forEach(post => { %>
+                <li>
+                    <strong><%= post.title %></strong>
+                    <p class="post-body"><%= post.body %></p>
+                    <a href="/blogposts/<%= post._id %>" class="view-link">Xem chi tiết →</a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <div style="text-align: center; padding: 50px; background: white; border-radius: 8px;">
+            <p>Hiện tại chưa có bài viết nào. Hãy bấm "Tạo bài viết mới" để bắt đầu!</p>
+        </div>
+    <% } %>
+</body>
+</html>
